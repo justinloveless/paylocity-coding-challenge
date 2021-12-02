@@ -1,8 +1,8 @@
 ﻿using System.Data;
-using API.DTOs;
 using API.Enums;
 using API.Interfaces;
 using API.Models;
+using API.ViewModels;
 
 namespace API.Repositories;
 
@@ -78,7 +78,7 @@ WHERE DependantId = @id",
             });
     }
 
-    public IEnumerable<DependantDto> GetDependantsByEmployeeId(int id)
+    public IEnumerable<DependantViewModel> GetDependantsByEmployeeId(int id)
     {
         return ExecuteQuery(@"
 SELECT D.DependantId, D.FirstName as DepFirstName, D.LastName as DepLastName, 
@@ -91,7 +91,7 @@ WHERE EmployeeId = @id",
                 {"@id", id}
             }).AsEnumerable().Select(row =>
         {
-            return new DependantDto
+            return new DependantViewModel
             {
                 DependantId = row.Field<int>("DependantId") ,
                 EmployeeId = row.Field<int>("EmployeeId"),
@@ -103,7 +103,7 @@ WHERE EmployeeId = @id",
         }).ToList();
     }
 
-    public DependantDto? GetDependantAndEmployeeByDependantId(int dependantId)
+    public DependantViewModel? GetDependantAndEmployeeByDependantId(int dependantId)
     {
         return ExecuteQuery(@"
 SELECT D.DependantId, D.FirstName as DepFirstName, D.LastName as DepLastName, 
@@ -114,7 +114,7 @@ INNER JOIN Employees E on EDR.EmployeeId = E.EmployeeId
 WHERE E.EmployeeId = @id", new Dictionary<string, object>()
         {
             {"@id", dependantId}
-        }).AsEnumerable().Select(row => new DependantDto()
+        }).AsEnumerable().Select(row => new DependantViewModel()
         {
             DependantId = row.Field<int>("DependantId"),
             EmployeeId = row.Field<int>("EmployeeId"),
@@ -138,9 +138,16 @@ VALUES (@empId, @depId, @rel)",
 
     public void RemoveDependantEmployeeRelationship(int dependantId, int employeeId)
     {
+        // TODO: Change this to use a transaction that deletes the dependant as well as the relationship at the same time
         ExecuteQuery(@"
 DELETE FROM dbo.EmployeeDependantRelations 
 WHERE EmployeeId = @empId AND DependantId = @depId",
             new Dictionary<string, object>() { { "@empId", employeeId }, { "@depId", dependantId } });
+    }
+
+    public void AddDependantToEmployee(DependantViewModel dependant)
+    {
+        // TODO: Construct transaction that creates dependant, and then creates a relationship with the employee if that employee exists
+        
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System.Data;
-using API.DTOs;
 using API.Enums;
 using API.Interfaces;
 using API.Models;
+using API.ViewModels;
 
 namespace API.Repositories;
 
@@ -81,9 +81,9 @@ WHERE EmployeeId = @id",
         });
     }
 
-    private List<EmployeeDto> DataTableToEmployeeDependantListTuple(DataTable table)
+    private List<EmployeeViewModel> DataTableToEmployeeDependantListTuple(DataTable table)
     {
-        List<EmployeeDto> employees = new List<EmployeeDto>();
+        List<EmployeeViewModel> employees = new List<EmployeeViewModel>();
         var rows = table.AsEnumerable();
         foreach (var row in rows)
         {
@@ -93,10 +93,10 @@ WHERE EmployeeId = @id",
             }
             var employeeDependants = rows.Where(r => 
                 r.Field<int>("EmployeeId") == row.Field<int>("EmployeeId"));
-            List<EmployeeDependantRelationDto> relations = employeeDependants
+            List<EmployeeDependantRelationViewModel> relations = employeeDependants
                 .Where(r => r.Field<int?>("DependantId") != null)
                 .Select(r => 
-                new EmployeeDependantRelationDto()
+                new EmployeeDependantRelationViewModel()
             {
                 DependantId = r.Field<int?>("DependantId"),
                 FirstName = r.Field<string?>("DepFirstName"),
@@ -104,8 +104,8 @@ WHERE EmployeeId = @id",
                 Relationship = (RelationshipTypes)Enum.Parse(typeof(RelationshipTypes),
                     (r.Field<string>("Relationship") ?? Enum.GetName(RelationshipTypes.child)))
             }).ToList();
-            EmployeeDto employee = 
-                new EmployeeDto()
+            EmployeeViewModel employee = 
+                new EmployeeViewModel()
             {
                 EmployeeId = row.Field<int?>("EmployeeId"),
                 FirstName = row.Field<string?>("EmpFirstName"),
@@ -117,7 +117,7 @@ WHERE EmployeeId = @id",
         }
         return employees;
     }
-    public IEnumerable<EmployeeDto> GetAllDtos()
+    public IEnumerable<EmployeeViewModel> GetAllDtos()
     {
         var results = ExecuteQuery(@"
 SELECT 
@@ -130,7 +130,7 @@ LEFT OUTER JOIN Dependants D on EDR.DependantId = D.DependantId", new Dictionary
         return DataTableToEmployeeDependantListTuple(results);
     }
 
-    public EmployeeDto GetDtoById(int id)
+    public EmployeeViewModel GetDtoById(int id)
     {
         var results = ExecuteQuery(@"
 SELECT 

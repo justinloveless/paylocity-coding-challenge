@@ -1,12 +1,10 @@
-﻿using API.Enums;
+﻿namespace API.ViewModels;
 
-namespace API.DTOs;
-
-public class EmployeeDto
+public class EmployeeViewModel
 {
     public int? EmployeeId { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public decimal? Salary { get; set; }
-    public IEnumerable<EmployeeDependantRelationDto> Dependants { get; set; }
+    public IEnumerable<EmployeeDependantRelationViewModel> Dependants { get; set; }
 }

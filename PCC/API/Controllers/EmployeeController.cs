@@ -1,5 +1,5 @@
-﻿using API.DTOs;
-using API.Interfaces;
+﻿using API.Interfaces;
+using API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -28,7 +28,7 @@ public class EmployeeController : BaseApiController
     }
     // TODO: Hire Employee
     [HttpPost]
-    public IActionResult HireEmployee([FromBody] EmployeeDto employee)
+    public IActionResult HireEmployee([FromBody] EmployeeViewModel employee)
     {
         _employeeService.HireEmployee(employee);
         return NoContent();
@@ -61,7 +61,7 @@ public class EmployeeController : BaseApiController
     }
     // TODO: add dependant to employee
     [HttpPost("dependant")]
-    public IActionResult AddDependant([FromBody] DependantDto dependant)
+    public IActionResult AddDependant([FromBody] DependantViewModel dependant)
     {
         _dependantService.AddDependantToEmployee(dependant);
         return NoContent();

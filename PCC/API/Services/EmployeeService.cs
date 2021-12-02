@@ -1,6 +1,6 @@
-﻿using API.DTOs;
-using API.Interfaces;
+﻿using API.Interfaces;
 using API.Models;
+using API.ViewModels;
 
 namespace API.Services;
 
@@ -14,17 +14,17 @@ public class EmployeeService: IEmployeeService
         _employeeRepository = employeeRepository;
         _dependantRepository = dependantRepository;
     }
-    public EmployeeDto? GetById(int id)
+    public EmployeeViewModel? GetById(int id)
     {
         return _employeeRepository.GetDtoById(id);
     }
 
-    public IEnumerable<EmployeeDto> GetAll()
+    public IEnumerable<EmployeeViewModel> GetAll()
     {
         return _employeeRepository.GetAllDtos();
     }
 
-    public void HireEmployee(EmployeeDto employee)
+    public void HireEmployee(EmployeeViewModel employee)
     {
         _employeeRepository.Create(new Employee
         {

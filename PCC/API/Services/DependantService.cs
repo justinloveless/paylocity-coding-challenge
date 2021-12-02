@@ -1,7 +1,7 @@
-﻿using API.DTOs;
-using API.Enums;
+﻿using API.Enums;
 using API.Interfaces;
 using API.Models;
+using API.ViewModels;
 
 namespace API.Services;
 
@@ -13,17 +13,17 @@ public class DependantService: IDependantService
     {
         _dependantRepository = dependantRepository;
     }
-    public DependantDto? GetById(int id)
+    public DependantViewModel? GetById(int id)
     {
         return _dependantRepository.GetDependantAndEmployeeByDependantId(id);
     }
 
-    public IEnumerable<DependantDto> GetDependantsByEmployeeId(int employeeId)
+    public IEnumerable<DependantViewModel> GetDependantsByEmployeeId(int employeeId)
     {
         return _dependantRepository.GetDependantsByEmployeeId(employeeId);
     }
 
-    public void AddDependantToEmployee(DependantDto dependant)
+    public void AddDependantToEmployee(DependantViewModel dependant)
     {
         // TODO: Create single repository method to do both tasks in 1 query (or add trigger on server)
         _dependantRepository.Create(new Dependant
