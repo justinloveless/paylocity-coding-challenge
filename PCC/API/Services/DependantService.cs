@@ -1,4 +1,5 @@
 ﻿using API.DTOs;
+using API.Enums;
 using API.Interfaces;
 using API.Models;
 
@@ -32,7 +33,7 @@ public class DependantService: IDependantService
             LastName = dependant.LastName
         });
         _dependantRepository.AddDependantEmployeeRelationship(
-            dependant.DependantId, dependant.EmployeeId, dependant.Relationship
+            dependant.DependantId ?? 0, dependant.EmployeeId ?? 0, dependant.Relationship ?? RelationshipTypes.child
             );
     }
 

@@ -93,26 +93,28 @@ WHERE EmployeeId = @id",
             }
             var employeeDependants = rows.Where(r => 
                 r.Field<int>("EmployeeId") == row.Field<int>("EmployeeId"));
-            List<EmployeeDependantRelationDto> relations = employeeDependants.Select(r => 
+            List<EmployeeDependantRelationDto> relations = employeeDependants
+                .Where(r => r.Field<int?>("DependantId") != null)
+                .Select(r => 
                 new EmployeeDependantRelationDto()
             {
-                DependantId = row.Field<int>("DependantId"),
-                FirstName = row.Field<string>("DepFirstName") ?? string.Empty,
-                LastName = row.Field<string>("DepLastName") ?? string.Empty
+                DependantId = r.Field<int?>("DependantId"),
+                FirstName = r.Field<string?>("DepFirstName"),
+                LastName = r.Field<string?>("DepLastName"),
+                Relationship = (RelationshipTypes)Enum.Parse(typeof(RelationshipTypes),
+                    (r.Field<string>("Relationship") ?? Enum.GetName(RelationshipTypes.child)))
             }).ToList();
             EmployeeDto employee = 
                 new EmployeeDto()
             {
-                EmployeeId = row.Field<int>("EmployeeId"),
-                FirstName = row.Field<string>("EmpFirstName") ?? string.Empty,
-                LastName = row.Field<string>("EmpLastName") ?? string.Empty,
-                Salary = row.Field<decimal>("Salary"),
+                EmployeeId = row.Field<int?>("EmployeeId"),
+                FirstName = row.Field<string?>("EmpFirstName"),
+                LastName = row.Field<string?>("EmpLastName"),
+                Salary = row.Field<decimal?>("Salary"),
                 Dependants = relations
             };
             employees.Add(employee);
-
         }
-
         return employees;
     }
     public IEnumerable<EmployeeDto> GetAllDtos()
@@ -120,7 +122,7 @@ WHERE EmployeeId = @id",
         var results = ExecuteQuery(@"
 SELECT 
 E.EmployeeId, E.FirstName as 'EmpFirstName', E.LastName as 'EmpLastName', E.Salary, 
-EDR.RelationType, 
+EDR.RelationType as Relationship, 
 D.DependantId, D.FirstName as 'DepFirstName', D.LastName as 'DepLastName'
 FROM dbo.Employees as E
 LEFT OUTER JOIN EmployeeDependantRelations EDR on E.EmployeeId = EDR.EmployeeId
@@ -133,12 +135,13 @@ LEFT OUTER JOIN Dependants D on EDR.DependantId = D.DependantId", new Dictionary
         var results = ExecuteQuery(@"
 SELECT 
 E.EmployeeId, E.FirstName as 'EmpFirstName', E.LastName as 'EmpLastName', E.Salary, 
-EDR.RelationType, 
+EDR.RelationType  as Relationship, 
 D.DependantId, D.FirstName as 'DepFirstName', D.LastName as 'DepLastName'
 FROM dbo.Employees as E
 LEFT OUTER JOIN EmployeeDependantRelations EDR on E.EmployeeId = EDR.EmployeeId
 LEFT OUTER JOIN Dependants D on EDR.DependantId = D.DependantId
-        WHERE E.EmployeeId = @id", new Dictionary<string, object>());
+        WHERE E.EmployeeId = @id", 
+            new Dictionary<string, object>() {{"@id", id}});
         return DataTableToEmployeeDependantListTuple(results).First();
     }
 

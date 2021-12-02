@@ -14,7 +14,7 @@ public class EmployeeService: IEmployeeService
         _employeeRepository = employeeRepository;
         _dependantRepository = dependantRepository;
     }
-    public EmployeeDto GetById(int id)
+    public EmployeeDto? GetById(int id)
     {
         return _employeeRepository.GetDtoById(id);
     }
@@ -47,8 +47,8 @@ public class EmployeeService: IEmployeeService
         // Really need to find a better way to do this, and this should be done using a transaction
         foreach (var dependant in employee.Dependants)
         {
-            _dependantRepository.Delete(dependant.DependantId);
-            _dependantRepository.RemoveDependantEmployeeRelationship(dependant.DependantId, id);
+            _dependantRepository.Delete(dependant.DependantId ?? 0);
+            _dependantRepository.RemoveDependantEmployeeRelationship(dependant.DependantId ?? 0, id);
         }
         _employeeRepository.Delete(id);
     }

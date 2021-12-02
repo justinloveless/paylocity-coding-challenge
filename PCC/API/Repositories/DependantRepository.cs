@@ -68,6 +68,7 @@ WHERE DependantId = @id", new Dictionary<string, object>()
 
     public void Delete(int id)
     {
+        if (id == null) return;
         ExecuteQuery(@"
 DELETE FROM dbo.Dependants 
 WHERE DependantId = @id",

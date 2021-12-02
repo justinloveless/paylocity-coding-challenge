@@ -5,7 +5,7 @@ namespace API.Interfaces;
 public interface IEmployeeService
 {
     //Get Employee by ID
-    public EmployeeDto GetById(int id);
+    public EmployeeDto? GetById(int id);
     //Get all employees
     public IEnumerable<EmployeeDto> GetAll();
     //Hire new employee
