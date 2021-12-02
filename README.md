@@ -18,6 +18,7 @@ would implement the application structure and calculations and get a brief previ
 * There are 26 paychecks in a year
 
 ## Setup
+Notes: .net 6 is not fully supported yet in every IDE. If you're using Visual Studio, you will need to use the 2022 version. 
 
 ```
   // TODO
