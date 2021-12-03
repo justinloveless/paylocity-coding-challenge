@@ -26,13 +26,14 @@ public class EmployeeService: IEmployeeService
 
     public void HireEmployee(EmployeeDto employee)
     {
-        _employeeRepository.Create(new Employee
-        {
-            EmployeeId = employee.EmployeeId,
-            FirstName = employee.FirstName,
-            LastName = employee.LastName,
-            Salary = employee.Salary,
-        });
+        _employeeRepository.CreateWithDependants(employee);
+        // _employeeRepository.Create(new Employee
+        // {
+        //     EmployeeId = employee.EmployeeId,
+        //     FirstName = employee.FirstName,
+        //     LastName = employee.LastName,
+        //     Salary = employee.Salary,
+        // });
     }
 
     public void UpdateSalary(int id, decimal newSalary)

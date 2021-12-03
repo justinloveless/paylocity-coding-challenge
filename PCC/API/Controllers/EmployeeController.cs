@@ -59,18 +59,4 @@ public class EmployeeController : BaseApiController
         _employeeService.UpdateSalary(id, salary);
         return NoContent();
     }
-    // TODO: add dependant to employee
-    [HttpPost("dependant")]
-    public IActionResult AddDependant([FromBody] DependantDto dependant)
-    {
-        _dependantService.AddDependantToEmployee(dependant);
-        return NoContent();
-    }
-    // TODO: remove dependant from employee
-    [HttpDelete("dependant")]
-    public IActionResult RemoveDependant([FromQuery] int dependantId, [FromQuery] int employeeId)
-    {
-        _dependantService.RemoveDependantFromEmployee(dependantId, employeeId);
-        return NoContent();
-    }
 }
