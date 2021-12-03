@@ -11,4 +11,10 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ClientApp\src\app\components" />
+      <Folder Include="ClientApp\src\app\models" />
+      <Folder Include="ClientApp\src\app\services" />
+    </ItemGroup>
+
 </Project>
