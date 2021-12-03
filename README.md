@@ -20,6 +20,13 @@ would implement the application structure and calculations and get a brief previ
 ## Setup
 Notes: .net 6 is not fully supported yet in every IDE. If you're using Visual Studio, you will need to use the 2022 version. 
 
+1. Clone this repository
+2. Install dependencies using npm install
+```
+npm isntall
+```
+3. 
+
 ```
   // TODO
 ```
