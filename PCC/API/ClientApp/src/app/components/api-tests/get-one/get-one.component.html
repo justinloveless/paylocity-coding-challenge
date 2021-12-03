@@ -1,0 +1,24 @@
+
+<div class="mt-2">
+  <mat-accordion class="py-2">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Get One</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <mat-form-field>
+          <mat-label>Id</mat-label>
+          <input matInput type="number" [(ngModel)]="employeeId" >
+        </mat-form-field>
+      </div>
+      <button mat-raised-button (click)="find()">Find</button>
+
+      <div *ngIf="isLoading">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </div>
+      <div *ngIf="employee">
+        <p>{{employee.lastName}}, {{employee.firstName}} makes ${{employee.salary}}</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
