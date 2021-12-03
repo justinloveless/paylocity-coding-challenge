@@ -1,4 +1,6 @@
-﻿using API.Interfaces;
+﻿using API.DTOs;
+using API.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
@@ -11,11 +13,19 @@ public class DependantController : BaseApiController
         _dependantService = dependantService;
     }
     
-    // TODO: Get All
-    // TODO: Get 1
-    // TODO: Get all by employee id
-    // TODO: create
-    // TODO: update
-    // TODO: delete
+    
+    [HttpPost]
+    public IActionResult AddDependant([FromBody] DependantDto dependant)
+    {
+        _dependantService.AddDependantToEmployee(dependant);
+        return NoContent();
+    }
+    
+    [HttpDelete]
+    public IActionResult RemoveDependant([FromQuery] int dependantId, [FromQuery] int employeeId)
+    {
+        _dependantService.RemoveDependantFromEmployee(dependantId, employeeId);
+        return NoContent();
+    }
     
 }

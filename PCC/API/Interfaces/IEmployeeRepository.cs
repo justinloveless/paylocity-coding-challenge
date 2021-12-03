@@ -9,4 +9,5 @@ public interface IEmployeeRepository: IRepository<Employee>
     public IEnumerable<EmployeeDto> GetAllDtos();
     public EmployeeDto GetDtoById(int id);
     public void UpdateSalaryById(int id, decimal salary);
+    public void CreateWithDependants(EmployeeDto employee);
 }

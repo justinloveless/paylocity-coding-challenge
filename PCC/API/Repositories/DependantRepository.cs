@@ -6,10 +6,13 @@ using API.Models;
 
 namespace API.Repositories;
 
-public class DependantRepository : BaseRepository<Dependant>, IDependantRepository
+public class DependantRepository : IDependantRepository
 {
-    public DependantRepository(IConfiguration configuration) : base(configuration)
+    private readonly ISqlService _sqlService;
+
+    public DependantRepository(ISqlService sqlService)
     {
+        _sqlService = sqlService;
     }
 
     private Dependant DataRowToDependant(DataRow row)
@@ -23,7 +26,7 @@ public class DependantRepository : BaseRepository<Dependant>, IDependantReposito
 
     public int Create(Dependant entity)
     {
-        DataTable table = ExecuteQuery(@"
+        DataTable table = _sqlService.ExecuteSingle(@"
 INSERT INTO dbo.Dependants (FirstName, LastName) 
 OUTPUT inserted.DependantId as id
 VALUES (@first, @last)", 
@@ -37,7 +40,7 @@ VALUES (@first, @last)",
 
     public IEnumerable<Dependant>? GetAll()
     {
-        DataTable table = ExecuteQuery(@"
+        DataTable table = _sqlService.ExecuteSingle(@"
 SELECT DependantId, FirstName, LastName 
 FROM dbo.Dependants",
             new Dictionary<string, object>() { });
@@ -46,7 +49,7 @@ FROM dbo.Dependants",
 
     public Dependant? Get(int id)
     {
-        DataTable table = ExecuteQuery(@"
+        DataTable table = _sqlService.ExecuteSingle(@"
 SELECT FirstName, LastName 
 FROM dbo.Dependants
         WHERE DependantId = @id", new Dictionary<string, object>() { {"@id", id} });
@@ -55,7 +58,7 @@ FROM dbo.Dependants
 
     public void Update(int id, Dependant entity)
     {
-        ExecuteQuery(@"
+        _sqlService.ExecuteSingle(@"
 UPDATE dbo.Dependants
 SET FirstName = @first, LastName = @Last
 WHERE DependantId = @id", new Dictionary<string, object>()
@@ -68,8 +71,8 @@ WHERE DependantId = @id", new Dictionary<string, object>()
 
     public void Delete(int id)
     {
-        if (id == null) return;
-        ExecuteQuery(@"
+        
+        _sqlService.ExecuteSingle(@"
 DELETE FROM dbo.Dependants 
 WHERE DependantId = @id",
             new Dictionary<string, object>()
@@ -80,7 +83,7 @@ WHERE DependantId = @id",
 
     public IEnumerable<DependantDto> GetDependantsByEmployeeId(int id)
     {
-        return ExecuteQuery(@"
+        return _sqlService.ExecuteSingle(@"
 SELECT D.DependantId, D.FirstName as DepFirstName, D.LastName as DepLastName, 
        EDR.EmployeeId, EDR.RelationType as Relationship
 from dbo.EmployeeDependantRelations EDR
@@ -105,7 +108,7 @@ WHERE EmployeeId = @id",
 
     public DependantDto? GetDependantAndEmployeeByDependantId(int dependantId)
     {
-        return ExecuteQuery(@"
+        return _sqlService.ExecuteSingle(@"
 SELECT D.DependantId, D.FirstName as DepFirstName, D.LastName as DepLastName, 
        E.EmployeeId, EDR.RelationType as Relationship 
 from dbo.EmployeeDependantRelations EDR
@@ -127,7 +130,7 @@ WHERE E.EmployeeId = @id", new Dictionary<string, object>()
 
     public void AddDependantEmployeeRelationship(int dependantId, int employeeId, RelationshipTypes relationship)
     {
-        ExecuteQuery(@"
+        _sqlService.ExecuteSingle(@"
 INSERT INTO dbo.EmployeeDependantRelations (EmployeeId, DependantId, RelationType)
 VALUES (@empId, @depId, @rel)",
             new Dictionary<string, object>()
@@ -138,7 +141,7 @@ VALUES (@empId, @depId, @rel)",
 
     public void RemoveDependantEmployeeRelationship(int dependantId, int employeeId)
     {
-        ExecuteQuery(@"
+        _sqlService.ExecuteSingle(@"
 DELETE FROM dbo.EmployeeDependantRelations 
 WHERE EmployeeId = @empId AND DependantId = @depId",
             new Dictionary<string, object>() { { "@empId", employeeId }, { "@depId", dependantId } });
