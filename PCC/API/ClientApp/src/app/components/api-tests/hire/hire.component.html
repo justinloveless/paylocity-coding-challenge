@@ -1,0 +1,35 @@
+
+<div class="mt-2">
+  <mat-accordion class="py-2">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Hire Employee</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput [(ngModel)]="employeeToHire.firstName" >
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput [(ngModel)]="employeeToHire.lastName" >
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Salary</mat-label>
+          <input matInput type="number" [(ngModel)]="employeeToHire.salary" >
+        </mat-form-field>
+      </div>
+      <div mat-dialog-actions align="end">
+        <button mat-raised-button color="primary" type="submit" (click)="hire()">Hire</button>
+      </div>
+
+      <div *ngIf="isLoading">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

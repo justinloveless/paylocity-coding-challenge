@@ -15,11 +15,42 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { SummaryComponent } from './components/summary/summary.component';
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ApiTestsComponent } from './components/api-tests/api-tests.component';
+import { GetAllComponent } from './components/api-tests/get-all/get-all.component';
+import { GetOneComponent } from './components/api-tests/get-one/get-one.component';
+import { HireComponent } from './components/api-tests/hire/hire.component';
+import { FireComponent } from './components/api-tests/fire/fire.component';
+import { AddDependantComponent } from './components/api-tests/add-dependant/add-dependant.component';
+import { RemoveDependantComponent } from './components/api-tests/remove-dependant/remove-dependant.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {CdkScrollableModule} from "@angular/cdk/scrolling";
+import { UpdateSalaryComponent } from './components/api-tests/update-salary/update-salary.component';
+import {MatListModule} from "@angular/material/list";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatBadgeModule} from "@angular/material/badge";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SummaryComponent,
+    EmployeeListComponent,
+    EmployeeComponent,
+    HeaderComponent,
+    ApiTestsComponent,
+    GetAllComponent,
+    GetOneComponent,
+    HireComponent,
+    FireComponent,
+    AddDependantComponent,
+    RemoveDependantComponent,
+    UpdateSalaryComponent
   ],
   imports: [
     // BrowserModule,
@@ -48,7 +79,14 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    CdkScrollableModule,
+    MatListModule,
+    MatGridListModule,
+    MatBadgeModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

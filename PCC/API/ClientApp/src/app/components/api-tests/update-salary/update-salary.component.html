@@ -1,0 +1,26 @@
+
+<div class="mt-2">
+  <mat-accordion class="py-2">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Update Salary</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <mat-form-field>
+          <mat-label>Id</mat-label>
+          <input matInput type="number" (scroll)="$event.preventDefault()" [(ngModel)]="employeeId" >
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Salary</mat-label>
+          <input matInput type="number" (scroll)="$event.preventDefault()" [(ngModel)]="salary" >
+        </mat-form-field>
+      </div>
+      <button mat-raised-button (click)="updateSalary()">Update</button>
+      <div *ngIf="isLoading">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

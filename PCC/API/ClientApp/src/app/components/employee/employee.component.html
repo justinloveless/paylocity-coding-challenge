@@ -1,0 +1,24 @@
+<mat-card class="m-2 mat-elevation-z2">
+  <mat-card-title>{{employee.firstName}} {{employee.lastName}}</mat-card-title>
+  <mat-card-content>
+    <!--      Employee Salary-->
+    <h4>Salary: ${{employee.salary}}
+      <button mat-icon-button (click)="editSalaryDialog()">
+        <mat-icon class="icon-display">edit</mat-icon>
+      </button>
+    </h4>
+    <!--      Employee ID-->
+    <p>ID: {{employee.employeeId}}</p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+
+    <!--      Employee Dependants Modal Button-->
+    <button mat-raised-button
+            matBadge="{{employee.dependants.length}}"
+            matBadgePosition="above after"
+            matBadgeColor="accent"
+            class="mx-3"
+            (click)="openDependantsDialog()"
+    >Dependants</button>
+  </mat-card-actions>
+</mat-card>

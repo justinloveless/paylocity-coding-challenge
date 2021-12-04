@@ -1,0 +1,30 @@
+
+<div class="mt-2">
+  <mat-accordion class="py-2">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Remove Dependant</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <mat-form-field>
+          <mat-label>Employee Id</mat-label>
+          <input matInput type="number" [(ngModel)]="dependantToRemove.employeeId" >
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Dependant First Name</mat-label>
+          <input matInput type="text" [(ngModel)]="dependantToRemove.firstName" >
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Dependant Last Name</mat-label>
+          <input matInput type="text" [(ngModel)]="dependantToRemove.lastName" >
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button (click)="removeDependant()">Remove Dependant</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

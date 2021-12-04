@@ -1,0 +1,18 @@
+<div>
+  <div class="d-flex justify-content-center">
+    <button mat-raised-button class="m-2" (click)="addEmployee()">Add Employee</button>
+  </div>
+  <div class="employee-list-header px-1 d-flex justify-content-between">
+    <span class="spacer"></span>
+    <!--  Just a little header thing-->
+    <h4 style="margin-bottom: 0px;">Employees</h4>
+    <span class="spacer"></span>
+  </div>
+  <mat-divider></mat-divider>
+</div>
+<div>
+<!--    *ngFor mat list items of all employees -->
+    <div *ngFor="let employee of employees">
+      <app-employee [employee]="employee"></app-employee>
+    </div>
+</div>

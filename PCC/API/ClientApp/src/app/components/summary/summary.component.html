@@ -1,0 +1,21 @@
+<div class="summary">
+  <div *ngIf="!isReady" class="mx-2 d-flex justify-content-between">
+    <span class="spacer"></span>
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <span class="spacer"></span>
+  </div>
+  <div *ngIf="isReady" class="mx-2 d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <div class="row">
+        <!--      total employees-->
+        <p>Employees: {{employeeCount}}</p>
+        <!--      total dependants-->
+        <p>Dependants: {{dependantCount}}</p>
+      </div>
+    </div>
+    <div class="d-flex align-items-center">
+      <h2 class="align-items-end">Total Cost of Benefits: ${{deductionTotal}}</h2>
+      <!--      total deductions for all employees-->
+    </div>
+  </div>
+</div>

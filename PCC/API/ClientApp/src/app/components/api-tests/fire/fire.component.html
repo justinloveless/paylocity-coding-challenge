@@ -1,0 +1,20 @@
+
+<div class="mt-2">
+  <mat-accordion class="py-2">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Fire Employee</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <mat-form-field>
+          <mat-label>Id</mat-label>
+          <input matInput type="number" (scroll)="$event.preventDefault()" [(ngModel)]="employeeToFireId" >
+        </mat-form-field>
+      </div>
+      <button mat-raised-button (click)="fire()">Fire</button>
+      <div *ngIf="isLoading">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
