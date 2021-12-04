@@ -25,7 +25,7 @@ Notes: .net 6 is not fully supported yet in every IDE. If you're using Visual St
 ```
 npm isntall
 ```
-3. 
+3. setup SQL Server Express Local DB
 
 ```
   // TODO
