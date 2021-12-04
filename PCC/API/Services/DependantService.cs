@@ -26,14 +26,14 @@ public class DependantService: IDependantService
     public void AddDependantToEmployee(DependantDto dependant)
     {
         // TODO: Create single repository method to do both tasks in 1 query (or add trigger on server)
-        _dependantRepository.Create(new Dependant
+        int depId = _dependantRepository.Create(new Dependant
         {
             DependantId = dependant.DependantId,
             FirstName = dependant.FirstName,
             LastName = dependant.LastName
         });
         _dependantRepository.AddDependantEmployeeRelationship(
-            dependant.DependantId ?? 0, dependant.EmployeeId ?? 0, dependant.Relationship ?? RelationshipTypes.child
+            depId , dependant.EmployeeId ?? 0, dependant.Relationship ?? RelationshipTypes.child
             );
     }
 
