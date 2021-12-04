@@ -135,7 +135,9 @@ INSERT INTO dbo.EmployeeDependantRelations (EmployeeId, DependantId, RelationTyp
 VALUES (@empId, @depId, @rel)",
             new Dictionary<string, object>()
             {
-                { "@empId", employeeId }, { "@depId", dependantId }, { "@rel", relationship }
+                { "@empId", employeeId }, 
+                { "@depId", dependantId }, 
+                { "@rel", Enum.GetName(typeof(RelationshipTypes), relationship) ?? "child" }
             });
     }
 
