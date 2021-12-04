@@ -30,6 +30,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {CdkScrollableModule} from "@angular/cdk/scrolling";
 import { UpdateSalaryComponent } from './components/api-tests/update-salary/update-salary.component';
+import {MatListModule} from "@angular/material/list";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatBadgeModule} from "@angular/material/badge";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -78,7 +82,11 @@ import { UpdateSalaryComponent } from './components/api-tests/update-salary/upda
     MatSnackBarModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    CdkScrollableModule
+    CdkScrollableModule,
+    MatListModule,
+    MatGridListModule,
+    MatBadgeModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

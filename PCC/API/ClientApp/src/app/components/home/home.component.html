@@ -1,2 +1,6 @@
-
-<p>Home works!</p>
+<app-summary [deductionTotal]="deductionTotal"
+             [dependantCount]="totalDependants"
+             [employeeCount]="totalEmployees"
+             [isReady]="summaryInfoReady"
+></app-summary>
+<app-employee-list [employees]="employees"></app-employee-list>

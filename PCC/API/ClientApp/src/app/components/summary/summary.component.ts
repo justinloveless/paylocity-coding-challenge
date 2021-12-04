@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-summary',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
+  @Input() deductionTotal: number = 0;
+  @Input() employeeCount: number = 0;
+  @Input() dependantCount: number = 0;
+  @Input() isReady: boolean = false;
+
 
   constructor() { }
 

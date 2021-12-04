@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Employee} from "../../models/employee";
 
 @Component({
   selector: 'app-employee',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent implements OnInit {
+  @Input() employee!: Employee;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openDependantsDialog(){
+    alert("Not implemented yet")
+  }
+
+  editSalaryDialog(){
+    alert("Not implemented yet")
   }
 
 }
