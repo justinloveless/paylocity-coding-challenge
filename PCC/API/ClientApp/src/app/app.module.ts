@@ -34,6 +34,12 @@ import {MatListModule} from "@angular/material/list";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatCardModule} from "@angular/material/card";
+import { AddEmployeeModalComponent } from './components/modals/add-employee-modal/add-employee-modal.component';
+import { EditEmployeeDependantsModalComponent } from './components/modals/edit-employee-dependants-modal/edit-employee-dependants-modal.component';
+import { EditSalaryModalComponent } from './components/modals/edit-salary-modal/edit-salary-modal.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatSelectModule} from "@angular/material/select";
+import { EmployeeDetailsModalComponent } from './components/modals/employee-details-modal/employee-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -50,44 +56,50 @@ import {MatCardModule} from "@angular/material/card";
     FireComponent,
     AddDependantComponent,
     RemoveDependantComponent,
-    UpdateSalaryComponent
+    UpdateSalaryComponent,
+    AddEmployeeModalComponent,
+    EditEmployeeDependantsModalComponent,
+    EditSalaryModalComponent,
+    EmployeeDetailsModalComponent
   ],
-  imports: [
-    // BrowserModule,
-    // AppRoutingModule,
-    // BrowserAnimationsModule,
-    // MatExpansionModule,
-    // MatButtonModule,
-    // MatFormFieldModule,
-    // FormsModule,
-    // MatInputModule,
-    // MatDialogModule,
-    // HttpClientModule,
-    // MatToolbarModule,
+    imports: [
+        // BrowserModule,
+        // AppRoutingModule,
+        // BrowserAnimationsModule,
+        // MatExpansionModule,
+        // MatButtonModule,
+        // MatFormFieldModule,
+        // FormsModule,
+        // MatInputModule,
+        // MatDialogModule,
+        // HttpClientModule,
+        // MatToolbarModule,
 
 
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatExpansionModule,
-    TooltipModule.forRoot(),
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    CdkScrollableModule,
-    MatListModule,
-    MatGridListModule,
-    MatBadgeModule,
-    MatCardModule
-  ],
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatExpansionModule,
+        TooltipModule.forRoot(),
+        MatToolbarModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        CdkScrollableModule,
+        MatListModule,
+        MatGridListModule,
+        MatBadgeModule,
+        MatCardModule,
+        MatStepperModule,
+        MatSelectModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

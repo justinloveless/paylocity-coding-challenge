@@ -1,0 +1,65 @@
+<h2 mat-dialog-title class="text-center">Hire Employee</h2>
+<mat-dialog-content class="mat-typography">
+
+  <mat-stepper orientation="vertical" linear="true" #stepper>
+    <mat-step [stepControl]="nameFormGroup">
+      <form [formGroup]="nameFormGroup">
+        <ng-template matStepLabel>Name</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstNameCtrl" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastNameCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-icon-button matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <form [formGroup]="salaryFormGroup">
+        <ng-template matStepLabel>Salary</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Salary</mat-label>
+          <input matInput type="number" formControlName="salaryCtrl">
+        </mat-form-field>
+        <div>
+          <button mat-icon-button matStepperPrevious><mat-icon>arrow_back</mat-icon></button>
+          <button mat-icon-button matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <form [formGroup]="dependantsFormGroup">
+        <ng-template matStepLabel>Dependants</ng-template>
+        <ng-container formArrayName="dependants">
+          <ng-container *ngFor="let dependantForm of dependantsControls; let i = index">
+            <div [formGroup]="dependantForm">
+              <p>Dependant #{{i + 1}}</p>
+              <mat-form-field appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" >
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName">
+              </mat-form-field>
+              <mat-icon (click)="removeDependantForm(i)">delete_forever</mat-icon>
+              <hr>
+            </div>
+          </ng-container>
+        </ng-container>
+        <button mat-mini-fab (click)="addDependantForm()">
+          <mat-icon>add</mat-icon>
+        </button>
+        <div>
+          <button mat-icon-button matStepperPrevious><mat-icon>arrow_back</mat-icon></button>
+          <button mat-icon-button (click)="submitEmployee()"><mat-icon>check</mat-icon></button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+
+</mat-dialog-content>

@@ -3,4 +3,4 @@
              [employeeCount]="totalEmployees"
              [isReady]="summaryInfoReady"
 ></app-summary>
-<app-employee-list [employees]="employees"></app-employee-list>
+<app-employee-list [employees]="employees" (reloadRequested)="reload()"></app-employee-list>

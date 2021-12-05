@@ -27,8 +27,7 @@ export class HomeComponent implements OnInit {
               private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.loadEmployees();
-    this.loadSummary();
+    this.reload();
   }
 
   loadEmployees(){
@@ -45,9 +44,16 @@ export class HomeComponent implements OnInit {
 
     }, error => {
       this.loadingEmployees = false;
-      this.snackBar.open("Failed to load employees", "Dismiss", {
-        duration: 2000
-      })
+      console.log(error)
+      if (error.status === 404){
+        this.snackBar.open("No employees found", "Dismiss", {
+          duration: 2000
+        })
+      } else {
+        this.snackBar.open("Failed to load employees", "Dismiss", {
+          duration: 2000
+        })
+      }
     })
   }
 
@@ -61,6 +67,9 @@ export class HomeComponent implements OnInit {
     })
   }
 
-
+  reload(){
+    this.loadEmployees();
+    this.loadSummary();
+  }
 
 }

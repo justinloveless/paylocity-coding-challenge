@@ -1,0 +1,15 @@
+<h2 mat-dialog-title class="text-center">Edit Salary</h2>
+<mat-dialog-content class="mat-typography">
+
+  <form [formGroup]="form">
+    <ng-template matStepLabel>Salary</ng-template>
+    <mat-form-field appearance="fill">
+      <mat-label>Salary</mat-label>
+      <input matInput type="number" formControlName="salaryCtrl" required value="salary">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="save()">Save</button>
+  <button mat-raised-button (click)="cancel()">Cancel</button>
+</mat-dialog-actions>
