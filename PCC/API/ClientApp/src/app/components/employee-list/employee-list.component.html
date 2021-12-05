@@ -13,6 +13,6 @@
 <div>
 <!--    *ngFor mat list items of all employees -->
     <div *ngFor="let employee of employees">
-      <app-employee [employee]="employee"></app-employee>
+      <app-employee [employee]="employee" (reloadRequested)="reloadRequested.emit()"></app-employee>
     </div>
 </div>

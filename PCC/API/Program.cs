@@ -20,7 +20,6 @@ builder.Services.AddCors();
 
 var app = builder.Build();
 
-app.UseCors(optBuilder => optBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -30,9 +29,22 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
+app.UseCors(optBuilder => optBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());//.WithOrigins("https://localhost:4200"));
+
 
 app.UseAuthorization();
 
-app.MapControllers();
+// if (!app.Environment.IsDevelopment())
+// {
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
+// }
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapFallbackToController("Index", "Fallback");
+});
 
 app.Run();

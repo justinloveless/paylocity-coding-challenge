@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Employee Paycheck Details</h2>
+<mat-dialog-content>
+  <h2>{{employee.firstName}} {{employee.lastName}}</h2>
+  <!--      Employee Salary-->
+  <h4>Salary: ${{employee.salary}}</h4>
+  <!--      Employee ID-->
+  <p>ID: {{employee.employeeId}}</p>
+  <p>Number of dependants: {{employee.dependants.length}}</p>
+  <div *ngIf="employeeDeductionDetails">
+    <p>Gross paycheck: ${{employeeDeductionDetails.grossPaycheck}}</p>
+    <p>Deductions: ${{employeeDeductionDetails.totalDeductions}}</p>
+    <p>Discounts: ${{employeeDeductionDetails.totalDiscounts}}</p>
+    <p>Net paycheck: ${{employeeDeductionDetails.netPaycheck}}</p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button (click)="close()">Close</button>
+</mat-dialog-actions>
+
+
+
+
+
+

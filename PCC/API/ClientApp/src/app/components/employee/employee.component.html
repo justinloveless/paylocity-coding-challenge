@@ -1,5 +1,10 @@
 <mat-card class="m-2 mat-elevation-z2">
-  <mat-card-title>{{employee.firstName}} {{employee.lastName}}</mat-card-title>
+  <mat-card-title>
+  <div class="d-flex justify-content-between">
+    <p>{{employee.firstName}} {{employee.lastName}}</p>
+    <button mat-icon-button (click)="viewDetails()"><mat-icon>info</mat-icon></button>
+  </div>
+  </mat-card-title>
   <mat-card-content>
     <!--      Employee Salary-->
     <h4>Salary: ${{employee.salary}}
@@ -10,15 +15,18 @@
     <!--      Employee ID-->
     <p>ID: {{employee.employeeId}}</p>
   </mat-card-content>
-  <mat-card-actions align="end">
+  <mat-card-actions>
+    <div class="d-flex justify-content-between">
+      <button mat-raised-button (click)="fireEmployee()" color="warn">Remove</button>
 
-    <!--      Employee Dependants Modal Button-->
-    <button mat-raised-button
-            matBadge="{{employee.dependants.length}}"
-            matBadgePosition="above after"
-            matBadgeColor="accent"
-            class="mx-3"
-            (click)="openDependantsDialog()"
-    >Dependants</button>
+      <!--      Employee Dependants Modal Button-->
+      <button mat-raised-button
+              matBadge="{{employee.dependants.length}}"
+              matBadgePosition="above after"
+              matBadgeColor="accent"
+              class="mx-3"
+              (click)="openDependantsDialog()"
+      >Dependants</button>
+    </div>
   </mat-card-actions>
 </mat-card>
