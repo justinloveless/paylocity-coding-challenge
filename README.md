@@ -32,6 +32,7 @@ would implement the application structure and calculations and get a brief previ
    - You may have to scroll down a bit to find it:
    
    ![sqlexpress](https://user-images.githubusercontent.com/16358843/144769043-bf063bbb-f076-4963-9627-fb33302cfce3.png)
+   `
 
 4. Make note of the connection string at the end, as we will need this later
 5. Install [VS Code](https://code.visualstudio.com/download)
