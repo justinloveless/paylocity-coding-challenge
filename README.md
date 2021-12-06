@@ -22,13 +22,13 @@ would implement the application structure and calculations and get a brief previ
 ### Pre-requisites
 1. Install [Node.js](https://nodejs.org/en/download/)
 ![node](https://user-images.githubusercontent.com/16358843/144769656-aa5b469e-bc68-4073-bcbc-f395763bc356.png)
-2. Install [Dotnet 6]()
+2. Install [Dotnet 6](https://dotnet.microsoft.com/download/dotnet/6.0)
 ![dotnet6](https://user-images.githubusercontent.com/16358843/144769655-4380ac57-47aa-42b2-9056-7de167d7c21e.png)
-3. Install [SQL Server Express]()  <i>(this will be used for local development only, because production uses an Azure SQL DB)</i>
+3. Install [SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)  <i>(this will be used for local development only, because production uses an Azure SQL DB)</i>
    - You may have to scroll down a bit to find it:
    ![sqlexpress](https://user-images.githubusercontent.com/16358843/144769043-bf063bbb-f076-4963-9627-fb33302cfce3.png)
 4. Make note of the connection string at the end, as we will need this later
-5. Install [VS Code]()
+5. Install [VS Code](https://code.visualstudio.com/download)
     ![vscode](https://user-images.githubusercontent.com/16358843/144769672-6f7bfade-a398-41e5-940e-eeed9bdb73e6.png)
 6. Install the "mssql" extension in VS Code
    
