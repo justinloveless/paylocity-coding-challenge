@@ -71,7 +71,13 @@ would implement the application structure and calculations and get a brief previ
    ![swagger](https://user-images.githubusercontent.com/16358843/144769452-7a89b9a3-7f2d-4acb-a059-5c14791074ab.png)
 
 ### starting the front-end
-14. Finally, run ``` ng serve ```. This will take a while the first time, but eventually a browser tab should open with the app front-end. 
+14. Finally, in another terminal, run 
+```
+cd PCC/API/ClientApp
+ng serve 
+``` 
+   
+This will take a while the first time, but eventually a browser tab should open with the app front-end. 
    
    ![frontend](https://user-images.githubusercontent.com/16358843/144769536-47dac819-2dc2-4511-97f0-7616d29d2da1.png)
 
