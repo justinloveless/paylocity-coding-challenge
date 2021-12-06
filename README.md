@@ -1,5 +1,8 @@
 # paylocity-coding-challenge
 
+## Live Demo:
+https://lovelesslabstx.com/
+
 ## Challenge Description:
 <strong>Business Need:</strong> 
 
