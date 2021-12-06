@@ -1,6 +1,8 @@
-<app-summary [deductionTotal]="deductionTotal"
-             [dependantCount]="totalDependants"
-             [employeeCount]="totalEmployees"
-             [isReady]="summaryInfoReady"
-></app-summary>
-<app-employee-list [employees]="employees" (reloadRequested)="reload()"></app-employee-list>
+<main class="mx-auto w-100">
+  <app-summary [deductionTotal]="deductionTotal"
+               [dependantCount]="totalDependants"
+               [employeeCount]="totalEmployees"
+               [isReady]="summaryInfoReady"
+  ></app-summary>
+  <app-employee-list [employees]="employees" (reloadRequested)="reload()"></app-employee-list>
+</main>
