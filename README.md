@@ -45,13 +45,14 @@ would implement the application structure and calculations and get a brief previ
 9. After executing the CreateTables.sql file, it's now time to execute the SeedData.sql file in the same folder. Same procedure here: open it, select the entire contents, and execute the query
    ![seedData](https://user-images.githubusercontent.com/16358843/144769379-d6f11fc0-6f51-407f-85c8-07d80f0596a5.png)
 ### starting the API
-10. In a terminal, go to PCC/API, and run ``` dotnet dev-certs https --trust ``` and if there is a popup like below, select <strong>"Yes"</strong>. 
+10. Open a terminal, navigate to PCC/API/ClientApp, and run ``` npm install ```
+11. Next, in the same location, run ``` npm link @angular/cli ```
+    - <strong>NOTE</strong>: You may need to restart your terminals, and possible VS Code, after this step. Try running ``` ng ``` by itself to make sure that it works before moving on.
+12. In a new terminal, go to PCC/API, and run ``` dotnet dev-certs https --trust ``` and if there is a popup like below, select <strong>"Yes"</strong>. 
    ![dev-certs](https://user-images.githubusercontent.com/16358843/144768947-d8161bc9-a54a-4f5e-ac76-8d36cc872294.png)
-11. In that same terminal, you can then run ``` dotnet watch run ```. This should open a browser and show you a Swagger page where you can test all of the API endpoints.
+13. In that same terminal, you can then run ``` dotnet watch run ```. This should open a browser and show you a Swagger page where you can test all of the API endpoints.
    ![swagger](https://user-images.githubusercontent.com/16358843/144769452-7a89b9a3-7f2d-4acb-a059-5c14791074ab.png)
 ### starting the front-end
-12. Open a new terminal, navigate to /PCC/API/ClientApp, and run ``` npm install ```
-13. Next, in the same location, run ``` npm link @angular/cli ```
 14. Finally, run ``` ng serve ```. This will take a while the first time, but eventually a browser tab should open with the app front-end. 
    ![frontend](https://user-images.githubusercontent.com/16358843/144769536-47dac819-2dc2-4511-97f0-7616d29d2da1.png)
 
