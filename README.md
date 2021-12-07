@@ -42,7 +42,8 @@ would implement the application structure and calculations and get a brief previ
 
 4. Make note of the connection string at the end, as we will need this later
 5. Install [VS Code](https://code.visualstudio.com/download)
-    <!--
+
+<!--
     ![vscode](https://user-images.githubusercontent.com/16358843/144769672-6f7bfade-a398-41e5-940e-eeed9bdb73e6.png)
 -->
 
@@ -52,7 +53,9 @@ would implement the application structure and calculations and get a brief previ
 
 7. Clone this repository or download [the zip](https://github.com/justinloveless/paylocity-coding-challenge/archive/refs/heads/main.zip)
 
+<!--
     ![git](https://user-images.githubusercontent.com/16358843/144769718-718e3310-0bc4-4ada-a1ef-1e8c18853bfb.png)
+-->
 
 ### setting up the local database
 8. Open <strong>PCC/API/SqlScripts/CreateTables.sql</strong>, select the entire contents of the file, and execute the query (use CTRL + SHIFT + E or hit the green play button)
