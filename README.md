@@ -93,5 +93,14 @@ This will take a while the first time, but eventually a browser tab should open 
 Note: If the browser does not automatically launch, you can get to it by opening a browser and navigating to ``` https://localhost:4200 ```
    
    ![frontend](https://user-images.githubusercontent.com/16358843/144769536-47dac819-2dc2-4511-97f0-7616d29d2da1.png)
+   
+   
+# Architecture
+This section is simply to explain the architecture of my solution.
+
+## Code Map
+![api-codemap](https://user-images.githubusercontent.com/16358843/145089878-3517c716-6b7a-40c3-bffa-ea22c5970290.png)
+
+
 
 
