@@ -30,16 +30,18 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-app.UseCors(optBuilder => optBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());//.WithOrigins("https://localhost:4200"));
+app.UseCors(optBuilder => 
+    optBuilder.AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowAnyOrigin()
+        // .WithOrigins("https://localhost:4200")
+    );
 
 
 app.UseAuthorization();
 
-// if (!app.Environment.IsDevelopment())
-// {
-    app.UseDefaultFiles();
-    app.UseStaticFiles();
-// }
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 app.UseEndpoints(endpoints =>
 {
