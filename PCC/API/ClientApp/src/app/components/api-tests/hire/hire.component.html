@@ -23,8 +23,8 @@
           <input matInput type="number" [(ngModel)]="employeeToHire.salary" >
         </mat-form-field>
       </div>
-      <div mat-dialog-actions align="end">
-        <button mat-raised-button color="primary" type="submit" (click)="hire()">Hire</button>
+      <div mat-dialog-actions>
+        <button mat-raised-button type="submit" (click)="hire()">Hire</button>
       </div>
 
       <div *ngIf="isLoading">
