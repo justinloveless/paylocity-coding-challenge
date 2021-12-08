@@ -32,8 +32,8 @@ OUTPUT inserted.DependantId as id
 VALUES (@first, @last)", 
             new Dictionary<string, object>()
         {
-            { "@first", entity.FirstName },
-            { "@last", entity.LastName }
+            { "@first", entity.FirstName ?? string.Empty},
+            { "@last", entity.LastName ?? string.Empty}
         });
         return table.AsEnumerable().Select(row => row.Field<int>("id")).FirstOrDefault();
     }
@@ -63,9 +63,9 @@ UPDATE dbo.Dependants
 SET FirstName = @first, LastName = @Last
 WHERE DependantId = @id", new Dictionary<string, object>()
         {
-            {"@first", entity.FirstName},
-            {"@last", entity.LastName},
-            {"@id", entity.DependantId}
+            {"@first", entity.FirstName ?? string.Empty},
+            {"@last", entity.LastName ?? string.Empty},
+            {"@id", entity.DependantId ?? 0}
         });
     }
 

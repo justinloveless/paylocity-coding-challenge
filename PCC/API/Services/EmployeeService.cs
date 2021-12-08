@@ -27,13 +27,6 @@ public class EmployeeService: IEmployeeService
     public void HireEmployee(EmployeeDto employee)
     {
         _employeeRepository.CreateWithDependants(employee);
-        // _employeeRepository.Create(new Employee
-        // {
-        //     EmployeeId = employee.EmployeeId,
-        //     FirstName = employee.FirstName,
-        //     LastName = employee.LastName,
-        //     Salary = employee.Salary,
-        // });
     }
 
     public void UpdateSalary(int id, decimal newSalary)
@@ -46,7 +39,7 @@ public class EmployeeService: IEmployeeService
         var employee = _employeeRepository.GetDtoById(id);
         // TODO: Delete all dependants of employee, and remove all relationships, then delete employee itself
         // Really need to find a better way to do this, and this should be done using a transaction
-        foreach (var dependant in employee.Dependants)
+        foreach (var dependant in employee.Dependants ?? new List<EmployeeDependantRelationDto>())
         {
             _dependantRepository.Delete(dependant.DependantId ?? 0);
             _dependantRepository.RemoveDependantEmployeeRelationship(dependant.DependantId ?? 0, id);

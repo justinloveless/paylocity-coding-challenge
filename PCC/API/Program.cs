@@ -33,8 +33,7 @@ app.UseRouting();
 app.UseCors(optBuilder => 
     optBuilder.AllowAnyHeader()
         .AllowAnyMethod()
-        .AllowAnyOrigin()
-        // .WithOrigins("https://localhost:4200")
+        .WithOrigins(Environment.GetEnvironmentVariable("AllowedOrigins") ?? string.Empty)
     );
 
 
