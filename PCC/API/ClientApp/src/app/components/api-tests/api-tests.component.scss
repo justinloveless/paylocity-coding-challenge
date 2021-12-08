@@ -1,0 +1,8 @@
+$tablet_width: 800px;
+
+main {
+  max-width: $tablet_width;
+  @media screen and (min-width: $tablet_width) {
+    padding: 0 30px;
+  }
+}

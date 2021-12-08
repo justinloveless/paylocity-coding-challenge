@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Dependants</h2>
+<mat-dialog-content>
+  <form [formGroup]="dependantsFormGroup">
+    <ng-template matStepLabel>Dependants</ng-template>
+    <ng-container formArrayName="dependants">
+      <ng-container *ngFor="let dependantForm of dependantsControls; let i = index">
+        <div [formGroup]="dependantForm">
+          <p>Dependant #{{i + 1}}</p>
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" >
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Relationship</mat-label>
+            <mat-select formControlName="relationship">
+              <mat-option *ngFor="let relationshipType of relationshipTypes" value="{{relationshipType}}">{{relationshipType}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-icon (click)="removeDependantForm(i)">delete_forever</mat-icon>
+          <hr>
+        </div>
+      </ng-container>
+    </ng-container>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="d-flex justify-content-between">
+    <button mat-raised-button (click)="addDependantForm()">
+      Add Dependant
+    </button>
+    <button mat-raised-button (click)="submitChanges()">Save</button>
+  </div>
+</mat-dialog-actions>

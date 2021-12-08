@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Employee Paycheck Details</h2>
+<mat-dialog-content>
+  <h2>{{employee.firstName}} {{employee.lastName}}</h2>
+  <!--      Employee ID-->
+  <p>ID: {{employee.employeeId}}</p>
+<!--  Number of dependants-->
+  <p>Number of dependants: {{employee.dependants.length}}</p>
+  <!--      Employee Salary-->
+  <h4>Salary: {{employee.salary | currency}}</h4>
+  <mat-divider></mat-divider>
+  <!--  Yearly deductions-->
+  <p *ngIf="employeeDeductionDetails">
+    Cost of benefits: {{employeeDeductionDetails.totalDeductions | currency}}/yr
+  </p>
+  <!--  Yearly discounts-->
+  <p *ngIf="employeeDeductionDetails">
+    Discounts: {{employeeDeductionDetails.totalDiscounts | currency}}/yr
+  </p>
+  <mat-divider></mat-divider>
+<!--  Gross paycheck-->
+  <p *ngIf="employeeDeductionDetails">
+    Gross paycheck: {{employeeDeductionDetails.grossPaycheck | currency}}
+  </p>
+<!--  Net paycheck-->
+  <p *ngIf="employeeDeductionDetails">
+    Net paycheck: {{employeeDeductionDetails.netPaycheck | currency}}
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button (click)="close()">Close</button>
+</mat-dialog-actions>
+
+
+
+
+
+

@@ -8,6 +8,10 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Data.SqlClient" Version="4.0.0" />
+        <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.5.2">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
@@ -15,6 +19,7 @@
       <Folder Include="ClientApp\src\app\components" />
       <Folder Include="ClientApp\src\app\models" />
       <Folder Include="ClientApp\src\app\services" />
+      <Folder Include="ClientApp\ssl" />
     </ItemGroup>
 
 </Project>

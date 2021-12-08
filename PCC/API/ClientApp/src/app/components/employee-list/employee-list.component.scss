@@ -1,12 +1,22 @@
+$tablet_width: 800px;
+
 button {
   width: 90%;
 }
 
 .employee-list-header {
-  background-color: lightgray;
+  background-color: var(--color-accent);
+  color: white;
+  @media screen and (min-width: $tablet_width) {
+    border-radius: 8px;
+  }
 
 }
 
 .spacer {
   flex: 1 1 auto;
+}
+
+.add-employee-btn {
+  border-color: var(--color-primary);
 }

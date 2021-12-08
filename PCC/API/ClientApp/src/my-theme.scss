@@ -1,0 +1,112 @@
+﻿@use "@angular/material" as mat;
+
+// this is the only place we should ever include mat.core(). Any additional includes will duplicate the CSS
+@include mat.core();
+
+
+$custom-palette: (
+  50: #fff3e2,
+  100: #ffe1b8,
+  200: #ffce8a,
+  300: #ffb95e,
+  400: #ffaa40,
+  500: #ff9c30,
+  600: #fb912d,
+  700: #f4812a,
+  800: #ed7328,
+  900: #e25b25,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+  )
+);
+$accent-palette: (
+  50: #ecedf0,
+  100: #ced4d9,
+  200: #aeb7c1,
+  300: #8d9ba8,
+  400: #758696,
+  500: #5e7284,
+  600: #516373,
+  700: #42505d,
+  800: #333e48,
+  900: #222a31,
+  contrast: (
+    50: #ffffff,
+    100: #ffffff,
+    200: #ffffff,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+  )
+);
+$warn-palette: (
+  50: #ffedef,
+  100: #ffd1d4,
+  200: #f5a19e,
+  300: #ee7d78,
+  400: #f96155,
+  500: #ff553b,
+  600: #f04b3a,
+  700: #dd4134,
+  800: #d03b2d,
+  900: #c13121,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+  )
+);
+
+$primary-hue: 600;
+$accent-hue: 400;
+$warn-hue: 400;
+
+$my-primary: mat.define-palette($custom-palette, $primary-hue);
+$my-accent: mat.define-palette($accent-palette, $accent-hue);
+$my-warn: mat.define-palette($warn-palette, $warn-hue);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    warn: $my-warn
+  )
+));
+
+@include mat.core-theme($my-theme);
+
+@include mat.all-component-themes($my-theme);
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: mat.get-color-from-palette($my-accent, 50);
+}
+
+
+:root {
+  --color-primary: #{mat.get-color-from-palette($my-primary, $primary-hue)};
+  --color-accent: #{mat.get-color-from-palette($my-accent, $accent-hue)};
+  --color-warn: #{mat.get-color-from-palette($my-warn, $warn-hue)};
+}

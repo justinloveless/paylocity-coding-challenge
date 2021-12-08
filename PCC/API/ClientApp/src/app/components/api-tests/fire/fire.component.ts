@@ -21,8 +21,9 @@ export class FireComponent implements OnInit {
     this.isLoading = true;
     this.employeeService.fire(this.employeeToFireId).subscribe(() =>{
       this.isLoading = false;
+      const idFired = this.employeeToFireId.toString(); // saving old value of id, as we'll be restting it
       this.employeeToFireId = 0; // reset model
-      this.snackBar.open(`employee ${this.employeeToFireId} fired`, '', {
+      this.snackBar.open(`employee ${idFired} fired`, '', {
         duration: 2000
       })
     }, error => {
