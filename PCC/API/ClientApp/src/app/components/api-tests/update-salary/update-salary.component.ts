@@ -19,10 +19,20 @@ export class UpdateSalaryComponent implements OnInit {
 
   updateSalary(){
     this.isLoading = true;
-    this.employeeService.updateSalary(this.employeeId, this.salary).subscribe(() => {
-      this.reset(`Salary of employee ${this.employeeId} updated to ${this.salary}`);
-    }, error =>  {
-      this.reset(`Unable to update salary of employee ${this.employeeId} to ${this.salary}`);
+    this.employeeService.getOne(this.employeeId).subscribe(emp => {
+      // found employee
+      this.employeeService.updateSalary(this.employeeId, this.salary).subscribe(() => {
+        const empId = this.employeeId.toString(); // save old values before resetting
+        const salary = this.salary.toString();
+        this.reset(`Salary of employee ${empId} updated to ${salary}`);
+      }, error =>  {
+        const empId = this.employeeId.toString(); // save old values before resetting
+        const salary = this.salary.toString();
+        this.reset(`Unable to update salary of employee ${empId} to ${salary}`);
+      })
+    }, error => {
+      // did not find employee
+      this.reset(`Employee not found`);
     })
   }
 
@@ -31,7 +41,7 @@ export class UpdateSalaryComponent implements OnInit {
     this.employeeId = 0;
     this.salary = 0;
     if (message) {
-      this.snackBar.open(message, "",
+      this.snackBar.open(message, "Dismiss",
         {
           duration: 2000
         })
