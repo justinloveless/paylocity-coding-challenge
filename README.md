@@ -3,6 +3,8 @@
 ## Live Demo:
 https://lovelesslabstx.com/
 
+Note: I am using a self-signed certificate on my site, so you will likely be prompted with a security warning. You will have to select to "Proceed Anyways" to view the demo. I'm sorry for the inconvenience...
+
 ## Challenge Description:
 <strong>Business Need:</strong> 
 
