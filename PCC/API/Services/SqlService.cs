@@ -79,7 +79,7 @@ public class SqlService : ISqlService, IDisposable
                 _transaction.Commit();
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             // _logger.LogError(ex, "unable to complete transaction. Rolling back");
             if (_transaction != null)
@@ -88,7 +88,7 @@ public class SqlService : ISqlService, IDisposable
                 {
                     _transaction.Rollback();
                 }
-                catch (Exception ex2)
+                catch (Exception)
                 {
                     // _logger.LogError(ex2, "Unable to rollback transaction. Has the connection closed?");
                 }
@@ -103,7 +103,7 @@ public class SqlService : ISqlService, IDisposable
         {
             _transaction.Rollback();
         }
-        catch (Exception ex2)
+        catch (Exception)
         {
             // _logger.LogError(ex2, "Unable to rollback transaction. Has the connection closed?");
         }

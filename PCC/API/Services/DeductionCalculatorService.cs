@@ -36,7 +36,7 @@ public class DeductionCalculatorService : IDeductionCalculatorService
             return null;
         double deductions = 0;
         double discounts = 0;
-        foreach (var dependant in employee.Dependants)
+        foreach (var dependant in employee.Dependants ?? new List<EmployeeDependantRelationDto>())
         {
             bool applyDiscount = ShouldApplyDiscount(dependant.FirstName);
             deductions += DependantCostPerYear * 
@@ -65,7 +65,7 @@ public class DeductionCalculatorService : IDeductionCalculatorService
     {
         return employees.Sum(e => 
             1000 * (e.FirstName != null && e.FirstName.StartsWith('A') ? 0.9 : 1.0)
-            + e.Dependants.Sum(d => 
+            + (e.Dependants ?? Array.Empty<EmployeeDependantRelationDto>()).Sum(d => 
                 500 * (d.FirstName != null && d.FirstName.StartsWith('A') ? 0.9 : 1.0)));
     }
 }

@@ -33,9 +33,9 @@ INSERT INTO dbo.Employees (FirstName, LastName, Salary)
 Output inserted.EmployeeId as id
 VALUES (@first, @last, @sal)", new Dictionary<string, object>()
             {
-                {"@first", entity.FirstName},
-                {"@last", entity.LastName},
-                {"@sal", entity.Salary}
+                {"@first", entity.FirstName ?? string.Empty},
+                {"@last", entity.LastName ?? string.Empty},
+                {"@sal", entity.Salary ?? 0}
             }).AsEnumerable()
             .Select(row => row.Field<int>("id")).FirstOrDefault();
     }
@@ -48,7 +48,7 @@ VALUES (@first, @last, @sal)", new Dictionary<string, object>()
             LastName = employee.LastName,
             Salary = employee.Salary
         });
-        foreach (var dependant in employee.Dependants)
+        foreach (var dependant in employee.Dependants ?? new List<EmployeeDependantRelationDto>())
         {
             // add dependant
             int dependantId = _sqlService.ExecuteSingle(@"
@@ -100,10 +100,10 @@ UPDATE dbo.Employees
 SET FirstName = @first, LastName = @last, Salary = @sal
 WHERE EmployeeId = @id", new Dictionary<string, object>()
         {
-            { "@first", entity.FirstName },
-            { "@last", entity.LastName },
-            { "@sal", entity.Salary },
-            { "@id", entity.EmployeeId }
+            { "@first", entity.FirstName ?? string.Empty},
+            { "@last", entity.LastName ?? string.Empty},
+            { "@sal", entity.Salary ?? 0},
+            { "@id", entity.EmployeeId ?? 0}
         });
     }
 
@@ -158,7 +158,8 @@ WHERE EmployeeId = @empId", parameters);
                 FirstName = r.Field<string?>("DepFirstName"),
                 LastName = r.Field<string?>("DepLastName"),
                 Relationship = (RelationshipTypes)Enum.Parse(typeof(RelationshipTypes),
-                    (r.Field<string>("Relationship") ?? Enum.GetName(RelationshipTypes.child)))
+                    (r.Field<string>("Relationship") ?? Enum.GetName(RelationshipTypes.child)) 
+                    ?? string.Empty)
             }).ToList();
             EmployeeDto employee = 
                 new EmployeeDto()
