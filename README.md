@@ -102,6 +102,9 @@ Note: If the browser does not automatically launch, you can get to it by opening
 # Architecture
 This section is simply to explain the architecture of my solution.
 
+## Overall architecture
+![PCC-Architecture](https://user-images.githubusercontent.com/16358843/145166300-d9ee4433-2e17-4a0b-a844-2615555d16f9.jpg)
+
 ## Code Map
 ![api-codemap](https://user-images.githubusercontent.com/16358843/145089878-3517c716-6b7a-40c3-bffa-ea22c5970290.png)
 
