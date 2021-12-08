@@ -21,6 +21,7 @@ would implement the application structure and calculations and get a brief previ
 * There are 26 paychecks in a year
 
 ## Getting Started
+
     
 ### Pre-requisites
 1. Install [Node.js](https://nodejs.org/en/download/)
@@ -104,10 +105,17 @@ This section is simply to explain the architecture of my solution.
 
 ## Overall architecture
 ![PCC-Architecture](https://user-images.githubusercontent.com/16358843/145166300-d9ee4433-2e17-4a0b-a844-2615555d16f9.jpg)
+* Database: Azure SQL Server Database
+* Web Server: Azure VM running Windows Server 2022, with IIS to host the site itself. 
+  * Note: normally, I would use an Azure App Service for this so I don't have to worry about managing as much infrastructure, but something changed with the way dotnet 6 sets up web APIs, and I couldn't get it working as usual. 
+* Front-end: Angular 13 with NGX-Bootstrap and Material. 
 
 ## Code Map
 ![api-codemap](https://user-images.githubusercontent.com/16358843/145089878-3517c716-6b7a-40c3-bffa-ea22c5970290.png)
 
+- I decided to use vanilla ADO.NET for my data access layer so that I could make my queries as efficient as possible. At the same time however, I made sure that my repositories were isolated from the rest of the project so that I could potentially swap to using a different database framework at any time.
+- I used services as an intermediary layer between the controllers and the repositories so the repos could focus on simply retrieving data, while the services could handle business logic related to converting that data into the DTOs that would eventually be sent to the clients.
+- I tried to keep my controllers as simple as possible. Their responsibilities were to simply setup endpoints to access the service layer, and forward data along. 
 
 
 
