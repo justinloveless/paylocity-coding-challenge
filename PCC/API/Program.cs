@@ -33,7 +33,7 @@ app.UseRouting();
 app.UseCors(optBuilder => 
     optBuilder.AllowAnyHeader()
         .AllowAnyMethod()
-        .WithOrigins(Environment.GetEnvironmentVariable("AllowedOrigins") ?? string.Empty)
+        .WithOrigins(builder.Configuration["AllowedOrigins"] ?? string.Empty)
     );
 
 
